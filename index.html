@@ -9,118 +9,395 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
   <style>
     select option {
-  color: #000;
-  background-color: #fff;
-}
-    :root{
-      --bg1:#0f2027;--bg2:#203a43;--bg3:#2c5364;
-      --glass:rgba(255,255,255,.06);--glass-2:rgba(255,255,255,.12);
-      --text:#e8eef3;--muted:#a8b3bd;--accent1:#00c6ff;--accent2:#0072ff;
-      --ok:#18d39e;--warn:#ffd166;
+      color: #000;
+      background-color: #fff;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      background: linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
-      background-size:400% 400%;
-      animation:gradient 15s ease infinite;
-      display:flex;align-items:center;justify-content:center;
-      padding:24px;
+
+    :root {
+      --bg1:#0a151a;
+      --bg2:#14242c;
+      --bg3:#1d333e;
+      --glass:rgba(255,255,255,.06);
+      --glass-2:rgba(255,255,255,.12);
+      --text:#e8eef3;
+      --muted:#a8b3bd;
+      --accent1:#00c6ff;
+      --accent2:#0072ff;
+      --ok:#18d39e;
+      --warn:#ffd166;
     }
-    @keyframes gradient{
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
+
+    * {
+      box-sizing: border-box;
     }
-    .card{
-      width:100%;max-width:860px;
-      background:var(--glass);
-      border:1px solid rgba(255,255,255,.08);
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      background-size: 400% 400%;
+      animation: gradient 30s ease infinite; /* Increased animation duration */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%
+      }
+
+      50% {
+        background-position: 100% 50%
+      }
+
+      100% {
+        background-position: 0% 50%
+      }
+    }
+
+    .card {
+      width: 100%;
+      max-width: 860px;
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,.08);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-radius:20px;
-      box-shadow:0 12px 40px rgba(0,0,0,.45);
-      overflow:hidden;
-      animation:fadeIn .8s ease;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.45);
+      overflow: hidden;
+      animation: fadeIn .8s ease;
+      transition: all 0.3s ease;
     }
-    @keyframes fadeIn{
-      from{opacity:0; transform: translateY(14px)}
-      to{opacity:1; transform: translateY(0)}
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5);
     }
-    .card-header{
-      padding:22px 26px;
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0));
-      border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex;align-items:center;justify-content:space-between;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
     }
-    .title{
-      font-weight:600;font-size:20px;letter-spacing:.2px
+
+    .card-header {
+      padding: 22px 26px;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .badge-soft{
-      padding:6px 10px;border-radius:10px;font-size:12px;
-      color:#0b2a2e;background:rgba(255,255,255,.85);font-weight:600
+
+    .title {
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: .2px
     }
-    .card-body{padding:24px}
-    .grid{
-      display:grid;grid-template-columns:1fr 1fr;gap:18px
+
+    .badge-soft {
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      color: #0b2a2e;
+      background: rgba(255,255,255,.85);
+      font-weight: 600
     }
-    @media (max-width:720px){ .grid{grid-template-columns:1fr} }
-    label{font-weight:600;color:var(--muted);margin-bottom:8px}
-    .form-control,.custom-select{
-      background:rgba(255,255,255,.08)!important;
-      border:1px solid rgba(255,255,255,.18)!important;
-      color:var(--text)!important;
-      border-radius:12px!important;
-      padding:12px 14px!important;
-      transition: box-shadow .2s,border-color .2s,background .2s;
+
+    .card-body {
+      padding: 24px
     }
-    .form-control:focus,.custom-select:focus{
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px
+    }
+
+    @media (max-width:720px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    label {
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    label svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--muted);
+    }
+
+    .form-control, .custom-select {
+      background: rgba(255,255,255,.08)!important;
+      border: 1px solid rgba(255,255,255,.18)!important;
+      color: var(--text)!important;
+      border-radius: 12px!important;
+      padding: 12px 14px!important;
+      transition: box-shadow .2s, border-color .2s, background .2s;
+    }
+
+    .form-control:focus, .custom-select:focus {
       border-color: rgba(0,198,255,.7)!important;
-      box-shadow:0 0 0 4px rgba(0,198,255,.15)!important;
-      background:rgba(255,255,255,.12)!important;
-      outline:none!important;
+      box-shadow: 0 0 0 4px rgba(0,198,255,.15)!important;
+      background: rgba(255,255,255,.12)!important;
+      outline: none!important;
     }
-    input[type="date"]::-webkit-calendar-picker-indicator{
-      filter: invert(1); opacity:.8; cursor: pointer
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      opacity: .8;
+      cursor: pointer
     }
-    .btn-gradient{
-      background: linear-gradient(45deg,var(--accent1),var(--accent2));
-      border:none;color:white;font-weight:700;
-      border-radius:12px;padding:12px 18px;
-      box-shadow:0 8px 22px rgba(0,114,255,.35);
+
+    .btn-gradient {
+      background: linear-gradient(45deg, var(--accent1), var(--accent2));
+      border: none;
+      color: white;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 12px 18px;
+      box-shadow: 0 8px 22px rgba(0,114,255,.35);
       transition: transform .15s ease, box-shadow .2s ease, filter .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      position: relative;
+      overflow: hidden; /* Clip overflow for animation */
     }
-    .btn-gradient:hover{ transform: translateY(-1px); filter: brightness(1.05) }
-    .btn-gradient:active{ transform: translateY(0) scale(.98) }
-    .actions{display:flex;gap:10px;flex-wrap:wrap}
-    .hint{color:var(--muted);font-size:12px;margin-top:6px}
-    .totals{
-      margin-top:6px;font-weight:600;color:var(--ok);
-      display:flex;gap:14px;flex-wrap:wrap
+
+    .btn-gradient:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05)
     }
-    .output{
-      margin-top:18px;padding:16px;border-radius:12px;
-      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
-      white-space:pre-wrap;word-break:break-word;color:var(--text);
+
+    .btn-gradient:active {
+      transform: translateY(0) scale(.98)
     }
-    .footer{
-      padding:16px 24px;border-top:1px solid rgba(255,255,255,.08);
-      display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
     }
-    .meter{
-      height:10px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08);
+
+    .hint {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 6px
     }
-    .meter > span{
-      display:block;height:100%;background:linear-gradient(90deg,#20e3b2,#0bb5ff);
-      width:0%; transition:width .25s ease
+
+    .totals {
+      margin-top: 6px;
+      font-weight: 600;
+      color: var(--ok);
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
     }
-    .fadeUp{opacity:0;animation:fadeUp .5s .15s forwards}
-    @keyframes fadeUp{
-      to{opacity:1; transform:none}
-      from{opacity:0; transform: translateY(10px)}
+
+    .output {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: var(--text);
+    }
+
+    .footer {
+      padding: 16px 24px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .meter {
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,.08);
+    }
+
+    .meter > span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, #20e3b2, #0bb5ff);
+      width: 0%;
+      transition: width .25s ease
+    }
+
+    .fadeUp {
+      opacity: 0;
+      animation: fadeUp .5s .15s forwards
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: none
+      }
+
+      from {
+        opacity: 0;
+        transform: translateY(10px)
+      }
+    }
+
+    .switch-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .currency-label {
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .currency-value {
+      font-weight: 600;
+      color: var(--ok);
+    }
+
+    /* Background Animation */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #003366, #001a33, #004d99); /* Darker Colors */
+      background-size: 400% 400%;
+      animation: backgroundShift 60s ease infinite; /* Slower Animation */
+      z-index: -1;
+      opacity: 0.7;
+    }
+
+    @keyframes backgroundShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Animated Copy Icon */
+    #copyBtn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #copyBtn svg {
+      transition: transform 0.3s ease, opacity 0.3s ease; /* Transition for icon transformation */
+    }
+
+    #copyBtn:hover svg {
+      transform: rotate(360deg);
+    }
+
+    #copyBtn .copy-success {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em; /* Size it to match SVG */
+      color: white;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #copyBtn.copied svg {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    #copyBtn.copied .copy-success {
+      opacity: 1;
     }
   </style>
 </head>
@@ -135,68 +412,132 @@
       <form id="reportForm">
         <div class="grid">
           <div class="form-group fadeUp">
-            <label for="date">📅 Дата</label>
+            <label for="date">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+              </svg>
+              Дата
+            </label>
             <input type="date" class="form-control" id="date" required>
           </div>
 
           <div class="form-group fadeUp">
-            <label for="bot">🤖 Бот</label>
+            <label for="bot">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/>
+              </svg>
+              Бот
+            </label>
             <select id="bot" class="custom-select" required>
               <option value="">Выберите</option>
 
-  <!-- Махигул 1–5 -->
-  <option>Махигул 1</option>
-  <option>Махигул 2</option>
-  <option>Махигул 3</option>
-  <option>Махигул 4</option>
-  <option>Махигул 5</option>
+              <!-- Махигул 1–5 -->
+              <option>Махигул 1</option>
+              <option>Махигул 2</option>
+              <option>Махигул 3</option>
+              <option>Махигул 4</option>
+              <option>Махигул 5</option>
 
-  <!-- Насиба 1–4 -->
-  <option>Насиба 1</option>
-  <option>Насиба 2</option>
-  <option>Насиба 3</option>
-  <option>Насиба 4</option>
+              <!-- Насиба 1–4 -->
+              <option>Насиба 1</option>
+              <option>Насиба 2</option>
+              <option>Насиба 3</option>
+              <option>Насиба 4</option>
 
-  <!-- В конце — Зайнура -->
-  <option>Зайнура</option>
-</select>
-
+              <!-- В конце — Зайнура -->
+              <option>Зайнура</option>
+            </select>
           </div>
 
           <div class="form-group fadeUp">
-            <label for="fdCount">📦 FD Кол-во</label>
+            <label for="fdCount">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M2 7h20v2H2V7zm0 12h20v2H2v-2zm0-6h20v2H2v-2z"/>
+              </svg>
+              FD Кол-во
+            </label>
             <input type="text" class="form-control" id="fdCount" required>
             <div class="hint">Только цифры, пробелы добавятся автоматически</div>
           </div>
 
           <div class="form-group fadeUp">
-            <label for="rdCount">📦 RD Кол-во</label>
+            <label for="rdCount">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M2 7h20v2H2V7zm0 12h20v2H2v-2zm0-6h20v2H2v-2z"/>
+              </svg>
+              RD Кол-во
+            </label>
             <input type="text" class="form-control" id="rdCount" required>
           </div>
 
           <div class="form-group fadeUp">
-            <label for="fdSum">💰 FD сумма (сум)</label>
+            <label for="fdSum">
+             <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><g><rect fill="none" height="24" width="24"/></g><g><path d="M21,7h-6.17L12,2.79L9.17,7H3v11H21V7z M12,6.63l2.83,4.27H18v9H6V10.9L9.17,6.63L12,6.63z M12,18.5c-1.93,0-3.5-1.57-3.5-3.5 s1.57-3.5,3.5-3.5s3.5,1.57,3.5,3.5S13.93,18.5,12,18.5z M12,13c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S13.1,13,12,13z"/></g></svg>
+              FD сумма
+            </label>
             <input type="text" class="form-control" id="fdSum" required>
             <div class="totals" id="fdTotals"></div>
           </div>
 
           <div class="form-group fadeUp">
-            <label for="rdSum">💰 RD сумма (сум)</label>
+            <label for="rdSum">
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><g><rect fill="none" height="24" width="24"/></g><g><path d="M21,7h-6.17L12,2.79L9.17,7H3v11H21V7z M12,6.63l2.83,4.27H18v9H6V10.9L9.17,6.63L12,6.63z M12,18.5c-1.93,0-3.5-1.57-3.5-3.5 s1.57-3.5,3.5-3.5s3.5,1.57,3.5,3.5S13.93,18.5,12,18.5z M12,13c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S13.1,13,12,13z"/></g></svg>
+              RD сумма
+            </label>
             <input type="text" class="form-control" id="rdSum" required>
             <div class="totals" id="rdTotals"></div>
+          </div>
+
+          <div class="form-group fadeUp">
+            <label for="tag">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7.55c0 .55.22 1.05.59 1.41l9 9c.36.36.86.58 1.41.58H20c1.1 0 2-.9 2-2v-7.55c0-.55-.22-1.05-.59-1.42zM7 7.5c-.83 0-1.5-.67-1.5-1.5S6.17 4.5 7 4.5s1.5.67 1.5 1.5S7.83 7.5 7 7.5z"/>
+              </svg>
+              Тэг
+            </label>
+            <input type="text" class="form-control" id="tag" placeholder="Введите тэг (например, skyflipper)">
+          </div>
+
+          <div class="form-group fadeUp">
+            <div class="switch-container" id="currencyToggleContainer">
+              <label for="currencyToggle" class="currency-label">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                 <path d="M2 6.02c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v12.02c0 1.1-.9 1.98-2 1.98H4c-1.1 0-2-.88-2-1.98V6.02zM20 8H4V6h16v2zm-5 8H4v-2h11v2zm0-4H4v-2h11v2z"/>
+                </svg>
+                Валюта
+              </label>
+              <div class="switch">
+                <input type="checkbox" id="currencyToggle">
+                <span class="slider"></span>
+              </div>
+              <span id="currencyValue" class="currency-value">UZS</span>
+            </div>
+            <div class="hint">Переключите, чтобы вводить в долларах</div>
           </div>
         </div>
 
         <div class="form-group fadeUp" style="margin-top:8px">
-          <label for="load">📊 Загруженность (0–10)</label>
+          <label for="load">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 11h2v6h-2V11z"/>
+            </svg>
+            Загруженность (0–10)
+          </label>
           <input type="number" class="form-control" id="load" min="0" max="10" required>
           <div class="hint">0 — свободно, 10 — максимум</div>
           <div class="meter" style="margin-top:8px"><span id="loadBar"></span></div>
         </div>
 
         <div class="actions fadeUp" style="margin-top:10px">
-          <button type="button" class="btn btn-gradient" id="genBtn">🚀 Сгенерировать</button>
-          <button type="button" class="btn btn-gradient" id="copyBtn">📋 Скопировать</button>
+          <button type="button" class="btn btn-gradient" id="genBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z"/></svg>
+            Сгенерировать
+          </button>
+          <button type="button" class="btn btn-gradient" id="copyBtn">
+            <svg id="copySvg" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><g><rect fill="none" height="24" width="24"/></g><g><path d="M16,1H4C2.9,1,2,1.9,2,3v14c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V3C18,1.9,17.1,1,16,1z M16,17H4V3h12V17z M19,5h-2v12h2 V5z"/></g></svg>
+            <svg id="checkSvg" class="copy-success" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" style="display:none;position:absolute;left:50%;top:50%;margin-left:-12px;margin-top:-12px;"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            Скопировать
+          </button>
         </div>
       </form>
 
@@ -208,25 +549,46 @@
       <div class="hint">Автоконвертация: UZS → USD по формуле (сумма FD + сумма RD)/1000/13.4</div>
     </div>
   </div>
-
-  <script>
+    <script>
     // Настройки
     const numberFormat = new Intl.NumberFormat('ru-RU');
+    let isUSD = false;
 
     // Утилиты форматирования
     const onlyDigits = (str) => str.replace(/[^\d]/g, '');
+    const onlyDigitsAndDecimal = (str) => str.replace(/[^\d,.]/g, '').replace(/,/g, '.');
     const prettify = (n) => numberFormat.format(n);
     const parseNum = (str) => {
       const s = onlyDigits(String(str||''));
       return s ? Number(s) : 0;
     };
+    const parseDecimal = (str) => {
+      const s = onlyDigitsAndDecimal(String(str||''));
+      return s ? Number(s) : 0;
+    };
     const sumToUsd = (uzs) => (uzs / 1000 / 13.4).toFixed(2);
+    const usdToSum = (usd) => (usd * 1000 * 13.4).toFixed(0);
 
-    function formatInputLive(el){
+    function formatInputLive(el, allowDecimal = false){
       const pos = el.selectionStart;
-      const raw = parseNum(el.value);
-      el.value = raw ? prettify(raw) : '';
-      // простое восстановление курсора
+      const raw = allowDecimal ? parseDecimal(el.value) : parseNum(el.value);
+
+      if (allowDecimal) {
+        // Format as decimal with optional decimal places
+        const parts = el.value.split('.');
+        if (parts.length > 1) {
+          // If there's a decimal point, keep it as is
+          el.value = parts[0] + '.' + parts[1];
+        } else {
+          // If no decimal point, just format the number
+          el.value = raw ? raw.toString() : '';
+        }
+      } else {
+        // Format as regular number with thousands separators
+        el.value = raw ? prettify(raw) : '';
+      }
+
+      // Restore cursor position
       try { el.setSelectionRange(pos, pos); } catch(e){}
     }
 
@@ -249,9 +611,33 @@
     const fdTotals  = document.getElementById('fdTotals');
     const rdTotals  = document.getElementById('rdTotals');
     const outEl     = document.getElementById('reportOutput');
+    const tagEl     = document.getElementById('tag');
+    const currencyToggle = document.getElementById('currencyToggle');
+    const currencyValue = document.getElementById('currencyValue');
+    const currencyToggleContainer = document.getElementById('currencyToggleContainer');
+    const copyBtn = document.getElementById('copyBtn');
+    const copySvg = document.getElementById('copySvg');
+    const checkSvg = document.getElementById('checkSvg');
+
+    // Сохранение и загрузка тэгa
+    function saveTag() {
+      const tag = tagEl.value.trim();
+      if (tag) {
+        localStorage.setItem('reportTag', `@${tag}`);
+      } else {
+        localStorage.removeItem('reportTag');
+      }
+    }
+
+    function loadTag() {
+      const savedTag = localStorage.getItem('reportTag');
+      if (savedTag) {
+        tagEl.value = savedTag.substring(1); // Убираем @ для отображения
+      }
+    }
 
     // Лайв-форматирование
-    [fdCountEl, rdCountEl, fdSumEl, rdSumEl].forEach(el=>{
+    [fdCountEl, rdCountEl].forEach(el=>{
       el.addEventListener('input', ()=>{
         formatInputLive(el);
         updateTotals();
@@ -259,33 +645,77 @@
       el.addEventListener('blur', ()=> formatInputLive(el));
     });
 
+    [fdSumEl, rdSumEl].forEach(el=>{
+      el.addEventListener('input', ()=>{
+        formatInputLive(el, isUSD);
+        updateTotals();
+      });
+      el.addEventListener('blur', ()=> formatInputLive(el, isUSD));
+    });
+
     loadEl.addEventListener('input', ()=>{
       const v = Math.max(0, Math.min(10, Number(loadEl.value||0)));
       loadBar.style.width = (v*10)+'%';
     });
 
+    tagEl.addEventListener('input', saveTag);
+
+    currencyToggleContainer.addEventListener('click', function() {
+      isUSD = !isUSD;
+      currencyToggle.checked = isUSD;
+      currencyValue.textContent = isUSD ? 'USD' : 'UZS';
+
+      // Reformat the sum inputs when switching currency
+      formatInputLive(fdSumEl, isUSD);
+      formatInputLive(rdSumEl, isUSD);
+
+      updateTotals();
+    });
+
     function updateTotals(){
-      const fd = parseNum(fdSumEl.value);
-      const rd = parseNum(rdSumEl.value);
-      const fdUsd = sumToUsd(fd);
-      const rdUsd = sumToUsd(rd);
-      fdTotals.textContent = fd ? `= ${prettify(fd)} сум · $${fdUsd}` : '';
-      rdTotals.textContent = rd ? `= ${prettify(rd)} сум · $${rdUsd}` : '';
+      let fd, rd, fdUsd, rdUsd;
+
+      if (isUSD) {
+        fd = parseDecimal(fdSumEl.value);
+        rd = parseDecimal(rdSumEl.value);
+        fdUsd = fd.toFixed(2);
+        rdUsd = rd.toFixed(2);
+        fdTotals.textContent = fd ? `${prettify(usdToSum(fd))} · $${fdUsd}` : '';
+        rdTotals.textContent = rd ? `${prettify(usdToSum(rd))} · $${rdUsd}` : '';
+      } else {
+        fd = parseNum(fdSumEl.value);
+        rd = parseNum(rdSumEl.value);
+        fdUsd = sumToUsd(fd);
+        rdUsd = sumToUsd(rd);
+        fdTotals.textContent = fd ? `${prettify(fd)} · $${fdUsd}` : '';
+        rdTotals.textContent = rd ? `${prettify(rd)} · $${rdUsd}` : '';
+      }
     }
 
     function buildReport(){
       const date = formatDateDDMMYY(document.getElementById('date').value);
       const bot  = document.getElementById('bot').value || '—';
+      const tag = tagEl.value.trim() ? ` ( @${tagEl.value.trim()} )` : '';
 
       const fdCount = parseNum(fdCountEl.value);
       const rdCount = parseNum(rdCountEl.value);
-      const fdSum   = parseNum(fdSumEl.value);
-      const rdSum   = parseNum(rdSumEl.value);
+      let fdSum, rdSum, fdUsd, rdUsd, totalSum, totalUsd;
 
-      const totalSum = fdSum + rdSum;
-      const fdUsd = sumToUsd(fdSum);
-      const rdUsd = sumToUsd(rdSum);
-      const totalUsd = sumToUsd(totalSum);
+      if (isUSD) {
+        fdSum = parseDecimal(fdSumEl.value);
+        rdSum = parseDecimal(rdSumEl.value);
+        fdUsd = fdSum.toFixed(2);
+        rdUsd = rdSum.toFixed(2);
+        totalSum = usdToSum(fdSum + rdSum);
+        totalUsd = (fdSum + rdSum).toFixed(2);
+      } else {
+        fdSum = parseNum(fdSumEl.value);
+        rdSum = parseNum(rdSumEl.value);
+        fdUsd = sumToUsd(fdSum);
+        rdUsd = sumToUsd(rdSum);
+        totalSum = fdSum + rdSum;
+        totalUsd = sumToUsd(totalSum);
+      }
 
       const load = Math.max(0, Math.min(10, Number(loadEl.value||0)));
 
@@ -294,10 +724,10 @@
         ``,
         `${bot}`,
         ``,
-        `FD ${prettify(fdCount)} | ${prettify(fdSum)} | $${fdUsd}`,
-        `RD ${prettify(rdCount)} | ${prettify(rdSum)} | $${rdUsd}`,
+        `FD ${prettify(fdCount)} | ${isUSD ? `${prettify(usdToSum(fdSum))} | $${fdUsd}` : `${prettify(fdSum)} | $${fdUsd}`}`,
+        `RD ${prettify(rdCount)} | ${isUSD ? `${prettify(usdToSum(rdSum))} | $${rdUsd} ${tag}` : `${prettify(rdSum)} | $${rdUsd} ${tag}`}`,
         ``,
-        `Общая: ${prettify(totalSum)} | $${totalUsd}`,
+        `Общая: ${isUSD ? `${prettify(totalSum)} | $${totalUsd}` : `${prettify(totalSum)} | $${totalUsd}`}`,
         ``,
         `Загруженность: ${load}/10`
       ];
@@ -314,7 +744,14 @@
       const txt = outEl.style.display==='block' ? outEl.textContent : buildReport();
       try{
         await navigator.clipboard.writeText(txt);
-        flashCopySuccess();
+        copyBtn.classList.add('copied');
+        copySvg.style.display = 'none';
+        checkSvg.style.display = 'block';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copySvg.style.display = 'block';
+          checkSvg.style.display = 'none';
+        }, 1500);
       }catch(e){
         // Фоллбэк
         const ta = document.createElement('textarea');
@@ -322,10 +759,16 @@
         document.body.appendChild(ta);
         ta.select(); document.execCommand('copy');
         document.body.removeChild(ta);
-        flashCopySuccess();
+        copyBtn.classList.add('copied');
+        copySvg.style.display = 'none';
+        checkSvg.style.display = 'block';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copySvg.style.display = 'block';
+          checkSvg.style.display = 'none';
+        }, 1500);
       }
     }
-    
 
     function flashCopySuccess(){
       const btn = document.getElementById('copyBtn');
@@ -335,21 +778,15 @@
     }
 
     document.getElementById('genBtn').addEventListener('click', showReport);
-    document.getElementById('copyBtn').addEventListener('click', copyReport);
+    copyBtn.addEventListener('click', copyReport);
 
     // Инициализация
+    loadTag();
     updateTotals();
   </script>
 </body>
-</html><!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Онлайн редактор кода GuruWeba</title>
-</head>
-<body>
-
-    <p></p>
+</html>
 
 </body>
+
 </html>
